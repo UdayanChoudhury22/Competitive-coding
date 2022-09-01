@@ -1,0 +1,30 @@
+ArrayList<ArrayList<Integer>>aa=new ArrayList<ArrayList<Integer>>();
+       
+        Node temp1=head;
+        Node temp2=head;
+        
+        while(temp1.next!=null){
+            temp1=temp1.next;
+            
+        }
+        Node temp3=temp1;
+        
+        while(temp2.data<temp3.data){
+            if((temp2.data+temp3.data)==target){
+                ArrayList<Integer>ab=new ArrayList<Integer>(2);
+                ab.add(temp2.data);
+                ab.add(temp3.data);
+                aa.add(ab);
+                temp2=temp2.next;
+                temp3=temp3.prev;
+                
+            }
+            else if((temp2.data+temp3.data)>target){
+                temp3=temp3.prev;
+            }
+            else{
+                temp2=temp2.next;
+            }
+        }
+        
+        return aa;
