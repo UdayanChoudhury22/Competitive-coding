@@ -1,0 +1,29 @@
+class Solution {
+    public int bagOfTokensScore(int[] tokens, int power) {
+        
+        Arrays.sort(tokens);
+        int l=0,r=tokens.length-1;
+        int point=0;
+        while(l<=r)
+        {
+            if(power>=tokens[l])
+            {
+                power-=tokens[l++];
+                point++;
+            }
+            else
+            {   if(power+tokens[r]>=tokens[l] && point!=0 && r!=l)
+                {
+                    power+=tokens[r--];
+                    point--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return point;
+        
+    }
+}
